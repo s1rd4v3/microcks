@@ -1,11 +1,9 @@
-version: '2'
-
 services:
   mongo:
     image: mongo:4.4.29
     container_name: microcks-db
-    volumes:
-      - "~/tmp/microcks-data:/data/db"
+    #volumes:
+    #  - "~/tmp/microcks-data:/data/db"
 
   keycloak:
     image: quay.io/keycloak/keycloak:26.0.0
@@ -15,8 +13,8 @@ services:
     environment:
       KEYCLOAK_ADMIN: "admin"
       KEYCLOAK_ADMIN_PASSWORD: "admin"
-    volumes:
-      - "./keycloak-realm/microcks-realm-sample.json:/opt/keycloak/data/import/microcks-realm.json"
+    #volumes:
+    #  - "./keycloak-realm/microcks-realm-sample.json:/opt/keycloak/data/import/microcks-realm.json"
     command: ["start-dev", "--hostname=http://localhost:18080", "--import-realm"]
 
   postman:
